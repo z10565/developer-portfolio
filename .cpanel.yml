@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOY_DIR=/home/<your_cpanel_user>/public_html
+    - echo "Installing dependencies..."
+    - /opt/cpanel/ea-nodejs18/bin/npm install --production
+    - echo "Building the project..."
+    - /opt/cpanel/ea-nodejs18/bin/npm run build
+    - echo "Copying built files to deployment directory..."
+    - cp -r dist/* $DEPLOY_DIR
+    - echo "Deployment completed successfully."
